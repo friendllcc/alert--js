@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		height: 900px;
+	}
+		.open{
+			margin: auto;
+			width: 200px;
+			height: 100px;
+			background: #FBFBFB;
+			border:solid 1px black;
+			position: relative;
+			display: none;
+		}
+		.open img{
+			position: absolute;
+			right: 0;
+			top:0;
+		}
+		.open img:hover{
+			background-color: red;
+		}
+	</style>
+</head>
+<body onClick="none()">
+	<input type="button" value="alert" name="btn"  id="d" onClick="block()">
+	<div id="e" class="open" name="alert" onClick="block()">
+		<img name="img" id="q" src="images/cha.png" onClick="none()">
+	</div>
+	<script>
+
+
+		function block(e)
+		{
+			var a=document.getElementsByName("alert")[0];
+			a.style.display="block";
+			    e = e || window.event;  
+	    			if(e.stopPropagation) { //W3C阻止冒泡方法  
+	        			e.stopPropagation();  
+	    			}
+	    			else {  
+	       	 			e.cancelBubble = true; //IE阻止冒泡方法  
+	    			}   
+			
+		}
+		function none(e)
+		{
+			var a=document.getElementsByName("alert")[0];
+			a.style.display="none";
+			e = e || window.event;  
+    			if(e.stopPropagation) { //W3C阻止冒泡方法  
+        			e.stopPropagation();  
+    			}
+    			else {  
+       	 			e.cancelBubble = true; //IE阻止冒泡方法  
+    			} 
+
+		}
+	</script>
+</body>
+</html>
