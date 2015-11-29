@@ -27,17 +27,42 @@
 	</style>
 </head>
 <body onClick="none()">
-	<input type="button" value="点击我" onClick="block()">
-	<div class="open" name="alert" onClick="block()">
-		<img src="images/cha.png" onClick="none()">
+	<input type="button" value="点击我" onClick="block1()">
+	<input type="button" value="点击我弹出第二个" onClick="block2()">
+	<div class="open" name="alert1" onClick="block1()">
+		<img name="img1" src="images/cha.png" onClick="none()">
+	</div>
+	<div class="open" name="alert2" onClick="block2()">
+		<img name="img2" src="images/cha.png" onClick="none()">
 	</div>
 	<script>
 
 
-		function block(e)
+		function block1(e)
 		{
-			var a=document.getElementsByName("alert")[0];
-			a.style.display="block";
+			var a=document.getElementsByName("alert1")[0];
+			var b=document.getElementsByName("alert2")[0];
+			if(b.style.display=='block')
+				b.style.display='none';
+			else
+				a.style.display="block";
+			    e = e || window.event;  
+	    			if(e.stopPropagation) { //W3C阻止冒泡方法  
+	        			e.stopPropagation();  
+	    			}
+	    			else {  
+	       	 			e.cancelBubble = true; //IE阻止冒泡方法  
+	    			}   
+			
+		}
+		function block2(e)
+		{
+			var a=document.getElementsByName("alert1")[0];
+			var b=document.getElementsByName("alert2")[0];
+			if(a.style.display=='block')
+				a.style.display='none';
+			else
+				b.style.display="block";
 			    e = e || window.event;  
 	    			if(e.stopPropagation) { //W3C阻止冒泡方法  
 	        			e.stopPropagation();  
@@ -49,8 +74,10 @@
 		}
 		function none(e)
 		{
-			var a=document.getElementsByName("alert")[0];
-			a.style.display="none";
+			var a=document.getElementsByName("alert1")[0];
+			var b=document.getElementsByName("alert2")[0];
+			if(a.style.display=='block')a.style.display="none";
+			if(b.style.display=='block')b.style.display="none";
 			e = e || window.event;  
     			if(e.stopPropagation) { //W3C阻止冒泡方法  
         			e.stopPropagation();  
